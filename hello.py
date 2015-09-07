@@ -1,3 +1,3 @@
 #!/usr/bin/python
 
-print "Hello Guest! My name is Gaurav Nirwal"
+print "Hello, World, my name is Gaurav Nirwal"
