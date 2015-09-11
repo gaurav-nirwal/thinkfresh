@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#Dynamic input from user for month
 
 from pysqlite2 import dbapi2 as sqlite
 import pandas as pd
@@ -38,12 +39,13 @@ with conn:
         weather(city text, year int, warm_month text, cold_month text, average_high int);''')
     cur.executemany('INSERT INTO weather (city, year, warm_month, cold_month, average_high) VALUES(?,?,?,?,?)', weather)
 
+    # ask the user for input
     var = raw_input("Please enter the month to see the warmest cities in that month: ")
 
     cur.execute('''SELECT c.name, c.state
                 FROM cities c inner join weather w on c.name=w.city
                 WHERE w.warm_month = ?
-                ;''', (var.capitalize(),))	
+                ;''', (var.capitalize(),))	# make sure input value matches the month in the table
 
     rows = cur.fetchall()
     cols = [desc[0] for desc in cur.description]	
