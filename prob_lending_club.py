@@ -7,8 +7,7 @@ loansdata = pd.read_csv('https://spark-public.s3.amazonaws.com/dataanalysis/loan
 loansdata.dropna(inplace=True) 
 
 loansdata.boxplot(column='Amount.Requested')
-plt.show()
-#plt.savefig('loansdata_boxplot.png')
+plt.savefig('loansdata_boxplot.png')
 
 minreq = loansdata['Amount.Requested'].min() #1000
 maxreq = loansdata['Amount.Requested'].max() #35000
